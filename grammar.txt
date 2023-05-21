@@ -1,0 +1,24 @@
+// grammar we want to implement
+strt : ident "=" calc ;
+calc : ("type int" ident ("," ident)*) ? expr ;
+expr : term (( "+" | "-" ) term)* ; 
+term : factor (( "*" | "/" ) term)* ;
+factor : ident | number | "("expr")" ;
+ident : ([a-zA-Z])+ ;
+number : ([0-9]) ;
+
+VERSION 2 :
+calc : ("type int" ident ("," ident)*)? expr ";" ;
+expr : ident "=" term (( "+" | "-" ) term)* ";" ; 
+term : factor (( "*" | "/" ) term)* ";" ;
+factor : ident | number | "("expr")" ;
+ident : ([a-zA-Z])+ ;
+number : ([0-9]) ;
+
+** IMPLEMENTED VERSION (WITHOUT ';') :
+calc : ("type int" ident ("," ident)*)? expr  ;
+expr : ident "=" term (( "+" | "-" ) term)*  ; 
+term : factor (( "*" | "/" ) term)* ;
+factor : ident | number | "("expr")" ;
+ident : ([a-zA-Z])+ ;
+number : ([0-9]) ;
